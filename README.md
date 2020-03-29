@@ -6,4 +6,4 @@ This is made to adapt the [ImageJ](https://imagej.nih.gov) plugins made by [Spec
 
 ## Installation
 
-In the /Config folder, add a text file called jarfile.txt which contains the path to the jar file created from compiling the java portion - the plugin itself.
+Add a Visual Basic/Spechron Online/Config folder, add a text file called jarfile.txt which contains the path to the jar file created from compiling the java portion - the plugin itself.
