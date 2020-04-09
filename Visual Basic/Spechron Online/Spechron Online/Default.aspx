@@ -41,6 +41,7 @@
                         }
                     PosX = PosX - ImgPos[0];
                     PosY = PosY - ImgPos[1];
+
                     // var finalpos = PosX.toString + PosY.toString;
                     if (document.getElementById("MainContent_PhasorPlot").src == "") {
                         document.getElementById("MainContent_problems").innerHTML = "upload an image to select points for unmixing";
@@ -76,7 +77,7 @@
             <br />
             <asp:Label ID="Debug" runat="server"></asp:Label>
             <br />
-            <asp:Image ID="PhasorPlot" runat="server" Height="460px" Width="460px" />
+            <asp:Image ID="PhasorPlot" runat="server" Height="600px" Width="600px" />
             <script type="text/javascript">
                 <!--
                 window.onload = function () {
@@ -107,7 +108,9 @@
                         var parameters = "first=" + document.getElementById("MainContent_coords1").innerHTML +
                             "&second=" + document.getElementById("MainContent_coords2").innerHTML +
                             "&third=" + document.getElementById("MainContent_coords3").innerHTML
-                            + "&imgsrc=" + document.getElementById("MainContent_UploadDetails").innerHTML;
+                            + "&imgsrc=" + encodeURI(document.getElementById("MainContent_UploadDetails").innerHTML) + 
+                            "&t=" + document.getElementById("MainContent_ThresholdSelect").value +
+                            "&b=" + document.getElementById("MainContent_BackgroundSelect").value;
                         var checked;
                         if (document.querySelector('#MainContent_showfractions').checked)
                             checked = "true";
