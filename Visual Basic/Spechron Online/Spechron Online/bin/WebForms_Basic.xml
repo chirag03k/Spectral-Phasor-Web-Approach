@@ -91,9 +91,27 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Spechron_Online._Default._UploadErrors">
+<summary>
+UploadErrors control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Spechron_Online._Default._Debug">
 <summary>
 Debug control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Spechron_Online._Default._PlotButton">
+<summary>
+PlotButton control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -220,6 +238,51 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:Spechron_Online.WebForm1._form1">
 <summary>
 form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Spechron_Online.WebForm1._Content">
+<summary>
+Content control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Spechron_Online.WebForm1._Output1">
+<summary>
+Output1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Spechron_Online.WebForm1._Output2">
+<summary>
+Output2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Spechron_Online.WebForm1._Output3">
+<summary>
+Output3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Spechron_Online.WebForm1._Overlay">
+<summary>
+Overlay control.
 </summary>
 <remarks>
 Auto-generated field.

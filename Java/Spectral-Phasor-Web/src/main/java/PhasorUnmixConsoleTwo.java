@@ -9,6 +9,7 @@ import ij.io.TiffEncoder;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,6 +52,7 @@ public class PhasorUnmixConsoleTwo {
     int shifty = 10;
 
     public void run(String path, String outfolder, String specifics, String coords){
+        new File(outfolder).mkdir();
         Spectral_Phasor_Console toBeUnmixed = new Spectral_Phasor_Console();
         toBeUnmixed.run(toBeUnmixed.consoleSetup(path, null, specifics, false));
         this.imp = toBeUnmixed.finishedPhasor;
@@ -86,11 +88,11 @@ public class PhasorUnmixConsoleTwo {
         ry[2] = Integer.parseInt(splitted[3]);
         rx[3] = Integer.parseInt(splitted[4]);
         ry[3]= Integer.parseInt(splitted[5]);
-        if(splitted[6].equals('t')) {
+        if(splitted[6].equals("t")) {
             show_fraction = true;
         }
         // The unmixing is done below (not in its own method as originally programmed)
-        //Dimensions of original image
+        // Dimensions of original image
         Dim_x = ip2.getWidth();
         Dim_y = ip2.getHeight();
 
@@ -204,6 +206,7 @@ public class PhasorUnmixConsoleTwo {
         int xx, yy;
         double alpha_t[] = new double[4];
         int RGBpxl[] = new int[3];
+
         for (int i = 1; i < Dim_x * Dim_y; i++) {
 
             if (phasor_r[i] != -2 && phasor_i[i] != -2) {
@@ -299,26 +302,16 @@ public class PhasorUnmixConsoleTwo {
                 }
             }
 
+        // Writing files to folder
             if(show_fraction){
-
-                TiffEncoder a1tif = new TiffEncoder(A1.getFileInfo());
-                File a1file = new File(outfolder + "\\A1.tif");
-
-                TiffEncoder a2tif = new TiffEncoder(A2.getFileInfo());
-                File a2file = new File(outfolder + "\\A2.tif");
-
-                TiffEncoder a3tif = new TiffEncoder(A3.getFileInfo());
-                File a3file = new File(outfolder + "\\A3.tif");
-
-                for(File f: new File[]{a1file, a2file, a3file}) {
-
-                }
-                int num = 0;
-                // Writing files to folder
+                String outpath;
+                int num = 1;
                 for(ImagePlus AImp: new ImagePlus[]{A1, A2, A3}) {
-
                     try {
-                        FileOutputStream out = new FileOutputStream(new File(outfolder + "\\A" + Integer.toString(num) + ".tif"), false);
+                        outpath = outfolder + "\\A" + num + ".tif";
+                        File outFile = new File(outpath);
+                        outFile.createNewFile();
+                        FileOutputStream out = new FileOutputStream(outFile, false);
                         new TiffEncoder(AImp.getFileInfo()).write(out);
                         out.close();
                     } catch (IOException e) {
@@ -328,16 +321,18 @@ public class PhasorUnmixConsoleTwo {
                 }
 
             } else {
-                int num = 0;
+                int num = 1;
                 for(ImagePlus XImp: new ImagePlus[]{X1, X2, X3, Overlay}) {
-
                     String outpath;
                     try {
                         if (num > 3)
                             outpath = outfolder + "\\Overlay.tif";
                         else
-                            outpath = outfolder + "\\X" + Integer.toString(num) + ".tif";
-                        FileOutputStream out = new FileOutputStream(new File(outpath), false);
+                            outpath = outfolder + "\\X" + num + ".tif";
+
+                        File outputFile = new File(outpath);
+                        outputFile.createNewFile();
+                        FileOutputStream out = new FileOutputStream(outputFile, false);
                         new TiffEncoder(XImp.getFileInfo()).write(out);
                         out.close();
                     } catch (IOException e) {
