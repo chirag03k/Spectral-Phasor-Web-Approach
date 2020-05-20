@@ -75,15 +75,15 @@ Module LibTiff
     End Sub
 
 
-    Public Function ReadMultiJaggedArray(ByVal inputName As String, ByRef image As Single()(,)) As Byte
+    Public Function ReadMultiJaggedArray(ByVal inputName As String, ByRef image As Single()(,), ByRef width As Integer, ByRef height As Integer, ByRef depth As Integer) As Byte
 
-        Dim Depth As Integer = GetPages(inputName)
+        depth = GetPages(inputName)
         Using img As Tiff = Tiff.Open(inputName, "r")
             Dim res As FieldValue() = img.GetField(TiffTag.IMAGELENGTH)
-            Dim Height As Integer = res(0).ToInt()
+            height = res(0).ToInt()
 
             res = img.GetField(TiffTag.IMAGEWIDTH)
-            Dim Width As Integer = res(0).ToInt()
+            width = res(0).ToInt()
 
             ReDim image(Depth - 1)
 
@@ -171,57 +171,7 @@ Module LibTiff
 
 
 
-    Public Function ReadMultiPae32(ByVal inputName As String) As Single(,,)
 
-
-        Dim Z As Integer = GetPages(inputName)
-        Using img As Tiff = Tiff.Open(inputName, "r")
-            Dim res As FieldValue() = img.GetField(TiffTag.IMAGELENGTH)
-            Dim height As Integer = res(0).ToInt()
-
-            res = img.GetField(TiffTag.IMAGEWIDTH)
-            Dim width As Integer = res(0).ToInt()
-
-            Dim ImgArray(width - 1, height - 1, Z) As Single
-
-            res = img.GetField(TiffTag.BITSPERSAMPLE)
-            Dim bpp As UInt32 = res(0).ToShort()
-            If bpp <> 32 Then
-                Return Nothing
-            End If
-
-            res = img.GetField(TiffTag.SAMPLESPERPIXEL)
-            Dim spp As Short = res(0).ToShort()
-            If spp <> 1 Then
-                Return Nothing
-            End If
-
-
-            Dim stride As Integer = img.ScanlineSize()
-            Dim buffer As Byte() = New Byte(stride - 1) {}
-
-
-
-            Dim ii As Integer
-
-            For k = 0 To Z - 1
-
-                For j As Integer = 0 To height - 1
-
-                    img.ReadScanline(buffer, j)
-                    ii = 0
-                    For i = 0 To stride - 1 Step 4
-                        ImgArray(ii, j, k) = buffer(i) + buffer(i + 1) * 256 + buffer(i + 2) * 256 * 256 + buffer(i + 3) * 256 * 256 * 256
-                        ii += 1
-                    Next
-                Next
-                img.ReadDirectory()
-            Next
-            Return ImgArray
-        End Using
-
-
-    End Function
 
     Public Sub SaveMultipageTiff(ByVal filename As String, ByVal Frame(,,) As Single)
 

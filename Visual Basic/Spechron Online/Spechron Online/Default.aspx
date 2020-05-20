@@ -77,7 +77,6 @@
             <br />
             <asp:Label ID="Debug" runat="server"></asp:Label>
             <br />
-            <asp:Image ID="PhasorPlot" runat="server" Height="600px" Width="600px" />
             <script type="text/javascript">
                 <!--
                 window.onload = function () {
@@ -86,6 +85,9 @@
                 }
                 //-->
             </script>
+          <asp:Image ID="Image1" runat="server" Height="600px" Width="600px" />  
+          <asp:Image ID="PhasorPlot" runat="server" Height="600px" Width="600px" />
+            
             <br />
             <h2>Phasor Unmix</h2>
             Coordinates 1: <asp:Label ID="coords1" runat="server"></asp:Label>
