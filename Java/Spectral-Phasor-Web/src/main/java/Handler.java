@@ -2,12 +2,11 @@ package main.java;
 
 import ij.process.ImageProcessor;
 
-
 public class Handler {
 
     public static void main(String[] args) {
 
-        /**
+        /*
          *
          * Command Line args
          * 0. Path to file that needs to be processed (C:\Users\...)

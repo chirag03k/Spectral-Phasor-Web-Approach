@@ -48,12 +48,10 @@ public class Spectral_Phasor_Console implements PlugInFilter {
         ImageStack stack = imp.getStack();
         int dimension = ip.getWidth() * ip.getHeight();
 
-        //Originally used a GenericDialog
+        // Originally used a GenericDialog
         String[] parameters = specifics.split("-");
 
         Roi roi = imp.getRoi();
-
-
 
         double threshold = 50;
         double back_ground = 0;
@@ -189,7 +187,6 @@ public class Spectral_Phasor_Console implements PlugInFilter {
         min_c = count_i[(int) (count_i.length * minPxlPctl)];
         max_c = count_i[(int) (count_i.length * maxPxlPctl)];
         int phasor_hist[][] = new int[phasor_dim + 1][phasor_dim + 1];
-
 
 
         // generating new image to show the phasor
