@@ -113,14 +113,12 @@ public class Spectral_Phasor_Console implements PlugInFilter {
                 for (int i = 1; i <= K; i++) {
                     if (roi != null) {
                         if (roi.contains(x, y)) {
-
                             spec[i][x][y] = stack.getVoxel(x, y, i - 1) - (back_ground / K);
                             if (spec[i][x][y] < 0) {
                                 spec[i][x][y] = 0;
                             }
                             spec_t[i] += spec[i][x][y];
                             spec_tx[i] = i;
-
                         }
                     } else {
 
