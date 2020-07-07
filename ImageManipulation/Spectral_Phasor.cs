@@ -10,6 +10,7 @@ namespace ImageManipulation
     class Spectral_Phasor
     {
 
+        // Use a JaggedArray instead of a bitmap - it contains the values for intensity that are necessary
         public void GenerateGraph(Bitmap[] imgStack, double P_Threshold, double P_Background, Boolean P_ShowSpectrum)
         {
 
@@ -74,7 +75,8 @@ namespace ImageManipulation
                     {
                         // TODO: what is ROI? How does it work?
 
-                        Color pixel = imgStack[I].GetPixel(X, Y);
+                        Color pixel = imgStack[I].GetPixel(X, Y)
+
                         
                     }
                 }

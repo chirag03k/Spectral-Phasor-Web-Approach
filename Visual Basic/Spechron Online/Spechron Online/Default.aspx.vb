@@ -41,7 +41,7 @@ Public Class _Default
             Dim img()(,) As Single
 
             Dim I As Integer
-            'Reads the uploaded tiff file and converts it into a jaged array 
+            'Reads the uploaded tiff file and converts it into a jagged array 
             ReadMultiJaggedArray(path, img, W, H, D)
             Dim Bmp As New Bitmap(W, H, Imaging.PixelFormat.Format24bppRgb)
             ' A preliminary way of converting the array into a bitmap where the total intensity is demostrated.
